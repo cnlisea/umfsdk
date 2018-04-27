@@ -5,6 +5,7 @@ import (
 	gcrypto "crypto"
 	"github.com/cnlisea/crypto"
 	"sort"
+	"net/url"
 )
 
 func Sign(param map[string]string) string {
@@ -28,4 +29,20 @@ func Sign(param map[string]string) string {
 	}
 
 	return crypto.EncryptBase64(crypto.SignRSA(b.Bytes()[:b.Len()-1], gcrypto.SHA1, string(privateKey)))
+}
+
+func VerifySign(data string) bool {
+	values, err := url.ParseQuery(data)
+	if err != nil {
+		return false
+	}
+
+	sign := values.Get("sign")
+	if sign == "" {
+		return false
+	}
+	values.Del("sign")
+	values.Del("sign_type")
+
+	return crypto.VerifySignature([]byte(values.Encode()), sign, gcrypto.SHA1, string(publicKey))
 }
