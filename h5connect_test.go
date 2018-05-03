@@ -7,7 +7,7 @@ import (
 )
 
 func TestH5Connect(t *testing.T) {
-	if err := Init("http://pay.soopay.net/spay/pay/payservice.do",  ""); err != nil {
+	if err := Init("http://pay.soopay.net/spay/pay/payservice.do", ""); err != nil {
 		log.Fatal(err)
 	}
 	cfg := &Config{

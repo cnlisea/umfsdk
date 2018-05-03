@@ -3,9 +3,10 @@ package umfsdk
 import (
 	"bytes"
 	gcrypto "crypto"
+	"github.com/axgle/mahonia"
 	"github.com/cnlisea/crypto"
 	"sort"
-	"net/url"
+	"strings"
 )
 
 func Sign(param map[string]string) string {
@@ -32,17 +33,11 @@ func Sign(param map[string]string) string {
 }
 
 func VerifySign(data string) bool {
-	values, err := url.ParseQuery(data)
-	if err != nil {
-		return false
-	}
+	signBegin := strings.Index(data, "&sign=")
+	signEnd := len(data)
 
-	sign := values.Get("sign")
-	if sign == "" {
-		return false
-	}
-	values.Del("sign")
-	values.Del("sign_type")
+	plain := data[0:signBegin]
+	plain = strings.Replace(plain, "&sign_type=RSA", "", -1)
 
-	return crypto.VerifySignature([]byte(values.Encode()), sign, gcrypto.SHA1, string(publicKey))
+	return crypto.VerifySignature([]byte(mahonia.NewEncoder("GBK").ConvertString(plain)), data[signBegin+6:signEnd], gcrypto.SHA1, string(publicKey))
 }

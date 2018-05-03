@@ -13,4 +13,6 @@ type Config struct {
 	MerData   time.Time // 订单日期
 	UserIp    string    // 用户IP
 	MerPriv   string    // 私有域
+	TradeNo   string    // 交易号
+	MerDate   time.Time // 订单日期
 }
