@@ -19,7 +19,7 @@ func H5Connect(cfg *Config, auto bool) string {
 		"goods_id":      cfg.GoodsId,                       // 商品号
 		"goods_inf":     cfg.GoodsInfo,                     // 商品描述信息
 		"order_id":      cfg.OrderId,                       // 订单号
-		"mer_date":      cfg.MerData.Format("20060102"),    // 订单日期
+		"mer_date":      cfg.MerDate.Format("20060102"),    // 订单日期
 		"amount":        strconv.FormatInt(cfg.Amount, 10), // 金额
 		"mer_priv":      cfg.MerPriv,                       // 私有域
 		"user_ip":       cfg.UserIp,                        // 用户IP地址

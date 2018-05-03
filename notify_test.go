@@ -11,9 +11,9 @@ func TestNotifyResponse(t *testing.T) {
 	}
 
 	cfg := &Config{
-		MerId:   "60216202",
+		MerId:   "",
 		OrderId: "11111111111111111111111111111128",
-		MerData: time.Now(),
+		MerDate: time.Now(),
 	}
 	t.Log(NotifyResponse(cfg))
 }

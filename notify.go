@@ -7,7 +7,7 @@ import (
 
 func NotifyResponse(cfg *Config) string {
 	m := map[string]string{
-		"mer_date":  cfg.MerData.Format("20060102"), // 订单日期
+		"mer_date":  cfg.MerDate.Format("20060102"), // 订单日期
 		"mer_id":    cfg.MerId,                      // 商户编号
 		"order_id":  cfg.OrderId,                    // 订单号
 		"ret_code":  "0000",                         // 返回状态码

@@ -17,7 +17,7 @@ func TestH5Connect(t *testing.T) {
 		GoodsInfo: "sea测试",
 		OrderId:   "11111111111111111111111111111111",
 		Amount:    1,
-		MerData:   time.Now(),
+		MerDate:   time.Now(),
 		UserIp:    "127.0.0.1",
 	}
 

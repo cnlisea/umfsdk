@@ -10,9 +10,8 @@ type Config struct {
 	GoodsInfo string    // 商品描述信息
 	OrderId   string    // 订单号
 	Amount    int64     // 金额, 单位分
-	MerData   time.Time // 订单日期
+	MerDate   time.Time // 订单日期
 	UserIp    string    // 用户IP
 	MerPriv   string    // 私有域
 	TradeNo   string    // 交易号
-	MerDate   time.Time // 订单日期
 }

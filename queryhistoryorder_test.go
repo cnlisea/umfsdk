@@ -13,8 +13,7 @@ func TestQueryHistoryOrder(t *testing.T) {
 	cfg := &Config{
 		MerId:   "",
 		OrderId: "",
-		TradeNo: "",
-		MerData: time.Date(2018, 4, 29, 0, 0, 0, 0, time.Local),
+		MerDate: time.Date(2018, 5, 3, 0, 0, 0, 0, time.Local),
 	}
 
 	res, err := QueryHistoryOrder(cfg)
@@ -23,5 +22,7 @@ func TestQueryHistoryOrder(t *testing.T) {
 		return
 	}
 
-	t.Log("res:", res)
+	for k, v := range res {
+		t.Log(k, " = ", v)
+	}
 }

@@ -14,7 +14,7 @@ func QueryHistoryOrder(cfg *Config) (map[string]string, error) {
 	param := map[string]string{
 		"service":  "mer_order_info_query",         // 请求类型
 		"mer_id":   cfg.MerId,                      // 商户号
-		"mer_date": cfg.MerData.Format("20060102"), // 订单日期
+		"mer_date": cfg.MerDate.Format("20060102"), // 订单日期
 		"order_id": cfg.OrderId,                    // 订单号
 		"trade_no": cfg.TradeNo,                    // 交易号
 	}
