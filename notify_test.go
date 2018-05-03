@@ -6,7 +6,7 @@ import (
 )
 
 func TestNotifyResponse(t *testing.T) {
-	if err := Init("", "D:/key/60216202_.key.pem"); err != nil {
+	if err := Init("http://pay.soopay.net/spay/pay/payservice.do", ""); err != nil {
 		t.Fatal(err)
 	}
 
