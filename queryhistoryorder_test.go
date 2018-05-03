@@ -11,9 +11,9 @@ func TestQueryHistoryOrder(t *testing.T) {
 	}
 
 	cfg := &Config{
-		MerId:   "60216202",
-		OrderId: "20184298504380172294697261864686",
-		TradeNo: "3804291651445650",
+		MerId:   "",
+		OrderId: "",
+		TradeNo: "",
 		MerData: time.Date(2018, 4, 29, 0, 0, 0, 0, time.Local),
 	}
 
