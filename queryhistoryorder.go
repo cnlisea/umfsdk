@@ -44,7 +44,7 @@ func QueryHistoryOrder(cfg *Config) (map[string]string, error) {
 	}
 
 	// sign verify
-	if !VerifySign(*(*string)(unsafe.Pointer(&parseData))) {
+	if !VerifySignQuery(*(*string)(unsafe.Pointer(&parseData))) {
 		return nil, errors.New("Invalid sign data ")
 	}
 
