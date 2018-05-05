@@ -3,19 +3,18 @@ package umfsdk
 import (
 	"testing"
 	"time"
-	"fmt"
 	"unsafe"
 )
 
 func TestH5Connect(t *testing.T) {
-	if err := Init("http://pay.soopay.net/spay/pay/payservice.do", "D:/key/60216202_.key.pem"); err != nil {
+	if err := Init("http://pay.soopay.net/spay/pay/payservice.do", ""); err != nil {
 		t.Fatal(err)
 	}
 	cfg := &Config{
-		MerId:     "60216202",
-		RetUrl:    "http://test.yuanlaihuyu.com",
-		NotifyUrl: "http://test.yuanlaihuyu.com/pay/notify",
-		GoodsInfo: "元来棋牌测试",
+		MerId:     "",
+		RetUrl:    "http://test.lisea.cn",
+		NotifyUrl: "http://test.lisea.cn/pay/notify",
+		GoodsInfo: "lisea测试",
 		OrderId:   "22222222222222222222222222222222",
 		Amount:    1,
 		MerDate:   time.Now(),
@@ -27,5 +26,5 @@ func TestH5Connect(t *testing.T) {
 		t.Fatal("err:", err)
 	}
 
-	fmt.Println("url:", *(*string)(unsafe.Pointer(&url)))
+	t.Log("url:", *(*string)(unsafe.Pointer(&url)))
 }
