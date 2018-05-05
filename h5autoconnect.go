@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func H5Connect(cfg *Config, auto bool) string {
+func H5AutoConnect(cfg *Config, auto bool) string {
 	autoParam := "FALSE"
 	if auto {
 		autoParam = "TRUE"
