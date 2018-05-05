@@ -7,10 +7,6 @@ import (
 )
 
 func H5AutoConnect(cfg *Config, auto bool) string {
-	autoParam := "FALSE"
-	if auto {
-		autoParam = "TRUE"
-	}
 	param := map[string]string{
 		"service":       "active_scancode_order_new",       // 请求类型
 		"mer_id":        cfg.MerId,                         // 商户号
@@ -24,8 +20,9 @@ func H5AutoConnect(cfg *Config, auto bool) string {
 		"mer_priv":      cfg.MerPriv,                       // 私有域
 		"user_ip":       cfg.UserIp,                        // 用户IP地址
 		"scancode_type": "WECHAT",                          // 类型: 微信
-		"auto_pay":      autoParam,                         // 是否需要自动跳转支付
+		"auto_pay":      "TRUE",                         // 是否需要自动跳转支付
 	}
+
 	param = publicParams(param) // 公共参数
 	param["sign"] = Sign(param) // 签名
 

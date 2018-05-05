@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func TestH5Connect(t *testing.T) {
+func TestH5AutoConnect(t *testing.T) {
 	if err := Init("http://pay.soopay.net/spay/pay/payservice.do", ""); err != nil {
 		log.Fatal(err)
 	}
@@ -21,5 +21,5 @@ func TestH5Connect(t *testing.T) {
 		UserIp:    "127.0.0.1",
 	}
 
-	t.Log(H5Connect(cfg, true))
+	t.Log(H5AutoConnect(cfg)
 }
