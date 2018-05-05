@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func H5AutoConnect(cfg *Config, auto bool) string {
+func H5AutoConnect(cfg *Config) string {
 	param := map[string]string{
 		"service":       "active_scancode_order_new",       // 请求类型
 		"mer_id":        cfg.MerId,                         // 商户号

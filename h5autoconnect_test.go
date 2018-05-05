@@ -21,5 +21,5 @@ func TestH5AutoConnect(t *testing.T) {
 		UserIp:    "127.0.0.1",
 	}
 
-	t.Log(H5AutoConnect(cfg)
+	t.Log(H5AutoConnect(cfg))
 }
