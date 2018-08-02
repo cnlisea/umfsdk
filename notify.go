@@ -23,6 +23,7 @@ type NotifyRequest struct {
 	SettleDate string `json:"settle_date"` // 对账日期 YYYYMMDD
 	MerPriv    string `json:"mer_priv"`    // 商户私有域
 	TradeState string `json:"trade_state"` // 订单状态
+	ErrorCode  string `json:"error_code"`  // 交易错误码
 }
 
 const (
