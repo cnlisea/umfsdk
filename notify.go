@@ -6,24 +6,24 @@ import (
 )
 
 type NotifyRequest struct {
-	Service    string `json:"service"`     // 接口名称
-	Charset    string `json:"charset"`     // 参数字符编码集
-	SignType   string `json:"sign_type"`   // 签名方式
-	Sign       string `json:"sign"`        // 签名
-	Version    string `json:"version"`     // 版本号
-	MerId      string `json:"mer_id"`      // 商户编号
-	TradeNo    string `json:"trade_no"`    // 联动交易号
-	GoodsId    string `json:"goods_id"`    // 商品号
-	OrderId    string `json:"order_id"`    // 订单号
-	MerDate    string `json:"mer_date"`    // 原商户订单日期 YYYYMMDD
-	PayDate    string `json:"pay_date"`    // 支付日期 YYYYMMDD
-	Amount     string `json:"amount"`      // 付款金额 单位分
-	AmtType    string `json:"amt_type"`    // 付款币种
-	PayType    string `json:"pay_type"`    // 支付方式
-	SettleDate string `json:"settle_date"` // 对账日期 YYYYMMDD
-	MerPriv    string `json:"mer_priv"`    // 商户私有域
-	TradeState string `json:"trade_state"` // 订单状态
-	ErrorCode  string `json:"error_code"`  // 交易错误码
+	Service    string `form:"service"`     // 接口名称
+	Charset    string `form:"charset"`     // 参数字符编码集
+	SignType   string `form:"sign_type"`   // 签名方式
+	Sign       string `form:"sign"`        // 签名
+	Version    string `form:"version"`     // 版本号
+	MerId      string `form:"mer_id"`      // 商户编号
+	TradeNo    string `form:"trade_no"`    // 联动交易号
+	GoodsId    string `form:"goods_id"`    // 商品号
+	OrderId    string `form:"order_id"`    // 订单号
+	MerDate    string `form:"mer_date"`    // 原商户订单日期 YYYYMMDD
+	PayDate    string `form:"pay_date"`    // 支付日期 YYYYMMDD
+	Amount     string `form:"amount"`      // 付款金额 单位分
+	AmtType    string `form:"amt_type"`    // 付款币种
+	PayType    string `form:"pay_type"`    // 支付方式
+	SettleDate string `form:"settle_date"` // 对账日期 YYYYMMDD
+	MerPriv    string `form:"mer_priv"`    // 商户私有域
+	TradeState string `form:"trade_state"` // 订单状态
+	ErrorCode  string `form:"error_code"`  // 交易错误码
 }
 
 const (
