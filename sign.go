@@ -3,11 +3,16 @@ package umfsdk
 import (
 	"bytes"
 	gcrypto "crypto"
-	"github.com/axgle/mahonia"
-	"github.com/cnlisea/crypto"
 	"net/url"
 	"sort"
 	"strings"
+
+	"time"
+
+	"fmt"
+
+	"github.com/axgle/mahonia"
+	"github.com/cnlisea/crypto"
 )
 
 func Sign(param map[string]string) string {
@@ -31,6 +36,15 @@ func Sign(param map[string]string) string {
 	}
 
 	return crypto.EncryptBase64(crypto.SignRSA(b.Bytes()[:b.Len()-1], gcrypto.SHA1, string(privateKey)))
+}
+
+func AppSign(merId string, orderId string, amount string, orderDate time.Time) string {
+	var b bytes.Buffer
+	b.WriteString(merId)
+	b.WriteString(orderId)
+	b.WriteString(amount)
+	b.WriteString(orderDate.Format("20060102"))
+	return fmt.Sprintf("%X", string(crypto.SignRSA(b.Bytes(), gcrypto.SHA1, string(privateKey))))
 }
 
 func VerifySignNotify(data string) bool {

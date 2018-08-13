@@ -9,7 +9,7 @@ import (
 	"github.com/cnlisea/crypto"
 )
 
-func App(cfg *Config) (string, error) {
+func App(cfg *Config) (string, string, error) {
 	param := map[string]string{
 		"service":    "pay_req",                         // 请求类型
 		"mer_id":     cfg.MerId,                         // 商户号
@@ -30,13 +30,13 @@ func App(cfg *Config) (string, error) {
 	// http post request
 	res, err := http.Post(requestUrl, "application/x-www-form-urlencoded", strings.NewReader(crypto.BuildQuery(param)))
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
 	defer res.Body.Close()
 
 	parseData, err := ResponseParse(res.Body)
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
 
 	vals := strings.Split(string(parseData), "&")
@@ -50,8 +50,8 @@ func App(cfg *Config) (string, error) {
 	}
 
 	if ret["ret_code"] != "0000" {
-		return "", errors.New(ret["ret_msg"])
+		return "", "", errors.New(ret["ret_msg"])
 	}
 
-	return ret["trade_no"], nil
+	return ret["trade_no"], AppSign(cfg.MerId, cfg.OrderId, strconv.FormatInt(cfg.Amount, 10), cfg.MerDate), nil
 }
