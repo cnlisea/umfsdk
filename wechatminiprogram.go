@@ -14,6 +14,7 @@ type WeChatMiniProgramInfo struct {
 	NonceStr  string // 随机字符串
 	Package   string // 数据包
 	SignType  string // 签名方式
+	PaySign   string // 签名
 }
 
 // 微信小程序支付
@@ -53,7 +54,7 @@ func WeChatMiniProgram(cfg *Config, appId string, openId string) (*WeChatMiniPro
 	vals := strings.Split(string(parseData), "&")
 	ret := make(map[string]string, len(vals))
 	for i := range vals {
-		s := strings.Split(vals[i], "=")
+		s := strings.SplitN(vals[i], "=", 2)
 		if len(s) < 2 {
 			continue
 		}
@@ -69,6 +70,7 @@ func WeChatMiniProgram(cfg *Config, appId string, openId string) (*WeChatMiniPro
 		TimeStamp: ret["time_stamp"],
 		NonceStr:  ret["nonce_str"],
 		Package:   ret["package"],
-		SignType:  ret["pay_sign"],
+		SignType:  ret["weixin_sign_type"],
+		PaySign:   ret["pay_sign"],
 	}, nil
 }
